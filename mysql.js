@@ -29,15 +29,15 @@ require('http').createServer(function(req, res) {
 	console.log(query,arr);
     switch (req.method.toLowerCase()) {
     case "put":
-	  res.writeHead(200, headers);
+      res.writeHead(200, headers);
       res.end('put');
       break;
     case "post":
-	  var mysql      = require('mysql2');
-	  var connection = mysql.createConnection(account);
-	  var sql = "insert into product values('"+ arr[2] +"', '" + unescape(query.doc) + "');";
-	  console.log(sql);
-	  connection.connect(function(err) {
+      var mysql      = require('mysql2');
+      var connection = mysql.createConnection(account);
+      var sql = "insert into product values('"+ arr[2] +"', '" + unescape(query.doc) + "');";
+      console.log(sql);
+      connection.connect(function(err) {
         connection.query(sql, function(err, rows, fields) {
 		  console.log(rows);
           connection.end();
